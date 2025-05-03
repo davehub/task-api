@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { VercelRequest } from "@vercel/node";
-import { VercelResponse } from "@vercel/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
+
 const app = express();
 const PORT = 3000;
 
@@ -18,7 +18,7 @@ const corsOptions = {
 
   const tasksHandler = require("./api/tasks").default;
 
-  app.all("/api/tasks", async (req: express.Request, res: express.Response) => {
+  app.all("/api/tasks", async (req: VercelRequest, res: VercelResponse) => {
     await tasksHandler(req, res);
   });
 
